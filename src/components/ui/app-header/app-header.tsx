@@ -14,7 +14,7 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => (
     <nav className={`${styles.menu} p-4`}>
       <div className={styles.menu_part_left}>
         <NavLink to={'/'} className={({ isActive }) => styles.link + (isActive ? ' ' + styles.link_active : '')}>
-          <BurgerIcon type={'primary'} />
+          <BurgerIcon type={'primary'}  />
           <p className='text text_type_main-default ml-2 mr-10'>Конструктор</p>
         </NavLink>
         <NavLink to={'/feed'} className={({ isActive }) => styles.link + (isActive ? ' ' + styles.link_active : '')}>
