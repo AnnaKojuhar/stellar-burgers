@@ -11,13 +11,15 @@ import ConstructorReducer from './slices/constructorSlice';
 import UserReducer from './slices/userSlice';
 import FeedReducer from './slices/feedSlice';
 
+export const rootReducer = combineReducers({
+  ingredients: IngredientsReducer,
+  constructorItems: ConstructorReducer,
+  user: UserReducer,
+  feed: FeedReducer
+});
+
 const store = configureStore({
-  reducer: {
-    ingredients: IngredientsReducer,
-    constructorItems: ConstructorReducer,
-    user: UserReducer,
-    feed: FeedReducer
-  },
+  reducer: rootReducer,
   devTools: process.env.NODE_ENV !== 'production'
 });
 

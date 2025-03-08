@@ -95,23 +95,13 @@ const App = () => {
         />
         {!background && (
           <>
-            <Route
-              path='/feed/:number'
-              element={
-                  <OrderPage/>
-              }
-            />
-            <Route
-              path='/ingredients/:id'
-              element={
-                  <IngredientPage />
-              }
-            />
+            <Route path='/feed/:number' element={<OrderPage />} />
+            <Route path='/ingredients/:id' element={<IngredientPage />} />
             <Route
               path='/profile/orders/:number'
               element={
                 <ProtectedRoute>
-                  <OrderPage/>
+                  <OrderPage />
                 </ProtectedRoute>
               }
             />
