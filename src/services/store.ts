@@ -19,12 +19,7 @@ export const rootReducer = combineReducers({
 });
 
 const store = configureStore({
-  reducer: {
-    ingredients: IngredientsReducer,
-    constructorItems: ConstructorReducer,
-    user: UserReducer,
-    feed: FeedReducer
-  },
+  reducer: rootReducer,
   devTools: process.env.NODE_ENV !== 'production'
 });
 

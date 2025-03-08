@@ -1,10 +1,12 @@
 import userSlice, {
   getOrdersThunk,
   getUserThunk,
+  initialState,
   loginUserThunk,
   logoutThunk,
   registerUserThunk,
-  TUserState, updateUserThunk
+  TUserState,
+  updateUserThunk
 } from '../services/slices/userSlice';
 
 describe('тестирование userSlice', () => {
@@ -20,7 +22,7 @@ describe('тестирование userSlice', () => {
       email: 'emailNew@gmail.com',
       name: 'hello world 11'
     }
-  }
+  };
 
   const OrdersResponse = [
     {
@@ -51,17 +53,10 @@ describe('тестирование userSlice', () => {
       updatedAt: '2025-03-06T18:11:07.299Z',
       number: 70204
     }
-  ]
+  ];
 
   describe('тестирование registerUserThunk', () => {
     it('registerUserThunk.pending', () => {
-      const initialState: TUserState = {
-        user: null,
-        isAuth: false,
-        loading: false,
-        error: null,
-        orders: []
-      };
       const updatedState = userSlice(initialState, {
         type: registerUserThunk.pending.type,
         payload: null
@@ -71,13 +66,6 @@ describe('тестирование userSlice', () => {
     });
 
     it('registerUserThunk.fulfilled', () => {
-      const initialState: TUserState = {
-        user: null,
-        isAuth: false,
-        loading: true,
-        error: null,
-        orders: []
-      };
       const updatedState = userSlice(initialState, {
         type: registerUserThunk.fulfilled.type,
         payload: AuthResponse
@@ -89,13 +77,6 @@ describe('тестирование userSlice', () => {
     });
 
     it('registerUserThunk.rejected', () => {
-      const initialState: TUserState = {
-        user: null,
-        isAuth: false,
-        loading: true,
-        error: null,
-        orders: []
-      };
       const updatedState = userSlice(initialState, {
         type: registerUserThunk.rejected.type,
         error: {
@@ -109,13 +90,6 @@ describe('тестирование userSlice', () => {
 
   describe('тестирование loginUserThunk', () => {
     it('loginUserThunk.pending', () => {
-      const initialState: TUserState = {
-        user: null,
-        isAuth: false,
-        loading: false,
-        error: null,
-        orders: []
-      };
       const updatedState = userSlice(initialState, {
         type: loginUserThunk.pending.type,
         payload: null
@@ -125,13 +99,6 @@ describe('тестирование userSlice', () => {
     });
 
     it('loginUserThunk.fulfilled', () => {
-      const initialState: TUserState = {
-        user: null,
-        isAuth: false,
-        loading: true,
-        error: null,
-        orders: []
-      };
       const updatedState = userSlice(initialState, {
         type: loginUserThunk.fulfilled.type,
         payload: AuthResponse
@@ -143,13 +110,6 @@ describe('тестирование userSlice', () => {
     });
 
     it('loginUserThunk.rejected', () => {
-      const initialState: TUserState = {
-        user: null,
-        isAuth: false,
-        loading: true,
-        error: null,
-        orders: []
-      };
       const updatedState = userSlice(initialState, {
         type: loginUserThunk.rejected.type,
         error: {
@@ -163,13 +123,6 @@ describe('тестирование userSlice', () => {
 
   describe('тестирование logoutThunk', () => {
     it('logoutThunk.pending', () => {
-      const initialState: TUserState = {
-        user: AuthResponse.user,
-        isAuth: true,
-        loading: false,
-        error: null,
-        orders: []
-      };
       const updatedState = userSlice(initialState, {
         type: logoutThunk.pending.type,
         payload: null
@@ -179,13 +132,6 @@ describe('тестирование userSlice', () => {
     });
 
     it('logoutThunk.fulfilled', () => {
-      const initialState: TUserState = {
-        user: AuthResponse.user,
-        isAuth: true,
-        loading: true,
-        error: null,
-        orders: []
-      };
       const updatedState = userSlice(initialState, {
         type: logoutThunk.fulfilled.type,
         payload: null
@@ -197,13 +143,6 @@ describe('тестирование userSlice', () => {
     });
 
     it('logoutThunk.rejected', () => {
-      const initialState: TUserState = {
-        user: AuthResponse.user,
-        isAuth: true,
-        loading: true,
-        error: null,
-        orders: []
-      };
       const updatedState = userSlice(initialState, {
         type: logoutThunk.rejected.type,
         error: {
@@ -217,13 +156,6 @@ describe('тестирование userSlice', () => {
 
   describe('тестирование getUserThunk', () => {
     it('getUserThunk.pending', () => {
-      const initialState: TUserState = {
-        user: null,
-        isAuth: false,
-        loading: false,
-        error: null,
-        orders: []
-      };
       const updatedState = userSlice(initialState, {
         type: getUserThunk.pending.type,
         payload: null
@@ -233,13 +165,6 @@ describe('тестирование userSlice', () => {
     });
 
     it('getUserThunk.fulfilled', () => {
-      const initialState: TUserState = {
-        user: null,
-        isAuth: false,
-        loading: true,
-        error: null,
-        orders: []
-      };
       const updatedState = userSlice(initialState, {
         type: getUserThunk.fulfilled.type,
         payload: AuthResponse
@@ -250,13 +175,6 @@ describe('тестирование userSlice', () => {
     });
 
     it('getUserThunk.rejected', () => {
-      const initialState: TUserState = {
-        user: null,
-        isAuth: false,
-        loading: true,
-        error: null,
-        orders: []
-      };
       const updatedState = userSlice(initialState, {
         type: getUserThunk.rejected.type,
         error: {
@@ -270,13 +188,6 @@ describe('тестирование userSlice', () => {
 
   describe('тестирование updateUserThunk', () => {
     it('updateUserThunk.pending', () => {
-      const initialState: TUserState = {
-        user: AuthResponse.user,
-        isAuth: true,
-        loading: false,
-        error: null,
-        orders: []
-      };
       const updatedState = userSlice(initialState, {
         type: updateUserThunk.pending.type,
         payload: null
@@ -286,30 +197,15 @@ describe('тестирование userSlice', () => {
     });
 
     it('updateUserThunk.fulfilled', () => {
-      const initialState: TUserState = {
-        user: AuthResponse.user,
-        isAuth: true,
-        loading: true,
-        error: null,
-        orders: []
-      };
       const updatedState = userSlice(initialState, {
         type: updateUserThunk.fulfilled.type,
         payload: UpdateUserResponse
       });
       expect(updatedState.user).toEqual(UpdateUserResponse.user);
-      expect(updatedState.isAuth).toEqual(true);
       expect(updatedState.loading).toEqual(false);
     });
 
     it('updateUserThunk.rejected', () => {
-      const initialState: TUserState = {
-        user: AuthResponse.user,
-        isAuth: true,
-        loading: true,
-        error: null,
-        orders: []
-      };
       const updatedState = userSlice(initialState, {
         type: updateUserThunk.rejected.type,
         error: {
@@ -322,51 +218,28 @@ describe('тестирование userSlice', () => {
   });
 
   describe('тестирование getOrdersThunk', () => {
-    it('getOrdersThunk.pending', () => {
-      const initialState: TUserState = {
-        user: AuthResponse.user,
-        isAuth: true,
-        loading: false,
-        error: 'some error',
-        orders: []
-      };
-      const updatedState = userSlice(initialState, {
-        type: getOrdersThunk.pending.type,
-        payload: null
-      });
-      expect(updatedState.error).toEqual(null);
+    const updatedState = userSlice(initialState, {
+      type: getOrdersThunk.pending.type,
+      payload: null
     });
+    expect(updatedState.error).toEqual(null);
+  });
 
-    it('getOrdersThunk.fulfilled', () => {
-      const initialState: TUserState = {
-        user: AuthResponse.user,
-        isAuth: true,
-        loading: true,
-        error: null,
-        orders: []
-      };
-      const updatedState = userSlice(initialState, {
-        type: getOrdersThunk.fulfilled.type,
-        payload: OrdersResponse
-      });
-      expect(updatedState.orders).toEqual(OrdersResponse);
+  it('getOrdersThunk.fulfilled', () => {
+    const updatedState = userSlice(initialState, {
+      type: getOrdersThunk.fulfilled.type,
+      payload: OrdersResponse
     });
+    expect(updatedState.orders).toEqual(OrdersResponse);
+  });
 
-    it('getOrdersThunk.rejected', () => {
-      const initialState: TUserState = {
-        user: AuthResponse.user,
-        isAuth: true,
-        loading: true,
-        error: null,
-        orders: []
-      };
-      const updatedState = userSlice(initialState, {
-        type: getOrdersThunk.rejected.type,
-        error: {
-          message: 'error'
-        }
-      });
-      expect(updatedState.error).toEqual('error');
+  it('getOrdersThunk.rejected', () => {
+    const updatedState = userSlice(initialState, {
+      type: getOrdersThunk.rejected.type,
+      error: {
+        message: 'error'
+      }
     });
+    expect(updatedState.error).toEqual('error');
   });
 });

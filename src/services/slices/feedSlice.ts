@@ -11,7 +11,7 @@ export interface IFeedState {
   orderSelected: TOrder | null;
 }
 
-const initialState: IFeedState = {
+export const initialState: IFeedState = {
   orders: [],
   error: null,
   loading: false,

@@ -1,16 +1,12 @@
 import ingredientsSlice, {
   getIngredientsThunk,
+  initialState,
   TIngredientsState
 } from '../services/slices/ingredientsSlice';
 
 describe('тестирование ingredientsSlice', () => {
   describe('тестирование getIngredientsThunk', () => {
     it('getIngredientsThunk.pending', () => {
-      const initialState: TIngredientsState = {
-        ingredients: [],
-        loading: false,
-        error: null
-      };
       const updatedState = ingredientsSlice(initialState, {
         type: getIngredientsThunk.pending.type,
         payload: null
@@ -20,12 +16,6 @@ describe('тестирование ingredientsSlice', () => {
     });
 
     it('getIngredientsThunk.fulfilled', () => {
-      const initialState: TIngredientsState = {
-        ingredients: [],
-        loading: true,
-        error: null
-      };
-
       const dataFromServer = [
         {
           _id: '643d69a5c3f7b9001cfa093c',
@@ -87,11 +77,6 @@ describe('тестирование ingredientsSlice', () => {
     });
 
     it('getIngredientsThunk.rejected', () => {
-      const initialState: TIngredientsState = {
-        ingredients: [],
-        loading: true,
-        error: null
-      };
       const updatedState = ingredientsSlice(initialState, {
         type: getIngredientsThunk.rejected.type,
         error: { message: 'error' }

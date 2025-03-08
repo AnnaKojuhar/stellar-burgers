@@ -12,23 +12,35 @@ const noFillingSelector = `[data-cy="noFilling"]`;
 const modalCloseButtonSelector = `[data-cy="modalCloseButton"]`;
 
 beforeEach(() => {
-  cy.intercept('GET', 'https://norma.nomoreparties.space/api/ingredients', {
+  cy.intercept('GET', '/api/ingredients', {
     fixture: 'ingredients.json'
   });
 
-  cy.intercept('GET', 'https://norma.nomoreparties.space/api/auth/user', {
+  cy.intercept('GET', '/api/auth/user', {
     fixture: 'userData.json'
   });
 
-  cy.intercept('POST', 'https://norma.nomoreparties.space/api/orders', {
+  cy.intercept('POST', '/api/orders', {
     fixture: 'orderData.json'
   });
 
-  cy.intercept('POST', 'https://norma.nomoreparties.space/api/auth/login', {
+  cy.intercept('POST', '/api/auth/login', {
     fixture: 'userData.json'
   });
 
-  cy.visit('http://localhost:4000');
+  window.localStorage.setItem('refreshToken', 'test');
+  cy.setCookie('accessToken', 'test');
+  cy.getAllLocalStorage().should('be.not.empty');
+  cy.getCookie('accessToken').should('be.not.empty');
+
+  cy.visit('/');
+});
+
+afterEach(() => {
+  window.localStorage.clear();
+  cy.clearAllCookies();
+  cy.getAllLocalStorage().should('be.empty');
+  cy.getAllCookies().should('be.empty');
 });
 
 it('Добавление ингредиента из списка в конструктор', () => {

@@ -16,7 +16,7 @@ export interface TConstructorState {
   orderRequest: boolean;
   orderModalData: TOrder | null;
 }
-const initialState: TConstructorState = {
+export const initialState: TConstructorState = {
   constructorItems: {
     bun: null,
     ingredients: []

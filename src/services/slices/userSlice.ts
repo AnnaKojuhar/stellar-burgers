@@ -20,7 +20,7 @@ export interface TUserState {
   orders: TOrder[];
 }
 
-const initialState: TUserState = {
+export const initialState: TUserState = {
   user: null,
   loading: true,
   error: null,
