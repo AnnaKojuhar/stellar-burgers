@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "user": {
+    "email": "test222@gmail.com",
+    "name": "test111@gmail.com"
+  },
+  "accessToken": "some token",
+  "refreshToken": "some token"
+}

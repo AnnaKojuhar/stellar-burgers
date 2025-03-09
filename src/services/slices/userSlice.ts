@@ -9,10 +9,10 @@ import {
   TLoginData,
   TRegisterData,
   updateUserApi
-} from '@api';
+} from '../../utils/burger-api';
 import { deleteCookie, setCookie } from '../../utils/cookie';
 
-interface TUserState {
+export interface TUserState {
   user: TUser | null;
   loading: boolean;
   error: null | undefined | string;
@@ -20,7 +20,7 @@ interface TUserState {
   orders: TOrder[];
 }
 
-const initialState: TUserState = {
+export const initialState: TUserState = {
   user: null,
   loading: true,
   error: null,
@@ -56,7 +56,12 @@ export const updateUserThunk = createAsyncThunk('user/update', updateUserApi);
 
 export const getUserThunk = createAsyncThunk('user/getUser', getUserApi);
 
-export const logoutThunk = createAsyncThunk('user/logout', logoutApi);
+export const logoutThunk = createAsyncThunk('user/logout', async () => {
+  const res = await logoutApi();
+  deleteCookie('accessToken');
+  localStorage.removeItem('refreshToken');
+  return res;
+});
 
 const userSlice = createSlice({
   name: 'user',
@@ -113,8 +118,6 @@ const userSlice = createSlice({
         state.loading = false;
         state.user = null;
         state.isAuth = false;
-        deleteCookie('accessToken');
-        localStorage.removeItem('refreshToken');
       })
       .addCase(logoutThunk.rejected, (state, action) => {
         state.loading = false;

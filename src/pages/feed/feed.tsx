@@ -8,15 +8,13 @@ export const Feed: FC = () => {
   /** TODO: взять переменную из стора */
   // const orders: TOrder[] = [];
   // const [orders, setOrders] = useState([]);
-  const orders = useSelector(state => state.feed.orders)
-
-
+  const orders = useSelector((state) => state.feed.orders);
 
   const dispatch = useDispatch();
 
   const handleGetFeeds = () => {
     dispatch(getFeedsThunk());
-  }
+  };
 
   useEffect(() => {
     dispatch(getFeedsThunk());

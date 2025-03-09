@@ -31,6 +31,7 @@ export const BurgerConstructorUI: FC<BurgerConstructorUIProps> = ({
       </div>
     ) : (
       <div
+        data-cy={'noBunsTop'}
         className={`${styles.noBuns} ${styles.noBunsTop} ml-8 mb-4 mr-5 text text_type_main-default`}
       >
         Выберите булки
@@ -50,6 +51,7 @@ export const BurgerConstructorUI: FC<BurgerConstructorUIProps> = ({
         )
       ) : (
         <div
+          data-cy={'noFilling'}
           className={`${styles.noBuns} ml-8 mb-4 mr-5 text text_type_main-default`}
         >
           Выберите начинку
@@ -68,6 +70,7 @@ export const BurgerConstructorUI: FC<BurgerConstructorUIProps> = ({
       </div>
     ) : (
       <div
+        data-cy={'noBunsBottom'}
         className={`${styles.noBuns} ${styles.noBunsBottom} ml-8 mb-4 mr-5 text text_type_main-default`}
       >
         Выберите булки
@@ -79,6 +82,7 @@ export const BurgerConstructorUI: FC<BurgerConstructorUIProps> = ({
         <CurrencyIcon type='primary' />
       </div>
       <Button
+        data-cy={'buttonOrder'}
         htmlType='button'
         type='primary'
         size='large'

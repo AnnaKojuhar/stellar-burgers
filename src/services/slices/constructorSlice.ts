@@ -5,9 +5,9 @@ import {
   nanoid,
   PayloadAction
 } from '@reduxjs/toolkit';
-import { orderBurgerApi } from '@api';
+import { orderBurgerApi } from '../../utils/burger-api';
 
-interface TConstructorState {
+export interface TConstructorState {
   constructorItems: {
     bun: TConstructorIngredient | null;
     ingredients: TConstructorIngredient[];
@@ -16,8 +16,7 @@ interface TConstructorState {
   orderRequest: boolean;
   orderModalData: TOrder | null;
 }
-
-const initialState: TConstructorState = {
+export const initialState: TConstructorState = {
   constructorItems: {
     bun: null,
     ingredients: []

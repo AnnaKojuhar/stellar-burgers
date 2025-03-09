@@ -1,8 +1,8 @@
 import { TOrder } from '@utils-types';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getFeedsApi, getOrderByNumberApi } from '@api';
+import { getFeedsApi, getOrderByNumberApi } from '../../utils/burger-api';
 
-interface IFeedState {
+export interface IFeedState {
   orders: TOrder[];
   error: null | undefined | string;
   loading: boolean;
@@ -11,7 +11,7 @@ interface IFeedState {
   orderSelected: TOrder | null;
 }
 
-const initialState: IFeedState = {
+export const initialState: IFeedState = {
   orders: [],
   error: null,
   loading: false,
@@ -60,7 +60,6 @@ const feedSlice = createSlice({
       })
       .addCase(getOrderByNumberThunk.rejected, (state, action) => {
         state.loading = false;
-        console.log(action);
         state.error = action.error.message;
       });
   }

@@ -15,7 +15,7 @@ export const Register: FC = () => {
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    const data: TRegisterData= {
+    const data: TRegisterData = {
       name: userName,
       email,
       password
