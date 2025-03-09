@@ -80,8 +80,7 @@ describe('тестирование constructorSlice', () => {
         calories: 420,
         price: 1255,
         image: 'https://code.s3.yandex.net/react/code/bun-02.png',
-        image_mobile:
-          'https://code.s3.yandex.net/react/code/bun-02-mobile.png',
+        image_mobile: 'https://code.s3.yandex.net/react/code/bun-02-mobile.png',
         image_large: 'https://code.s3.yandex.net/react/code/bun-02-large.png',
         __v: 0
       },
@@ -97,8 +96,7 @@ describe('тестирование constructorSlice', () => {
         image: 'https://code.s3.yandex.net/react/code/meat-01.png',
         image_mobile:
           'https://code.s3.yandex.net/react/code/meat-01-mobile.png',
-        image_large:
-          'https://code.s3.yandex.net/react/code/meat-01-large.png',
+        image_large: 'https://code.s3.yandex.net/react/code/meat-01-large.png',
         __v: 0
       },
       {
@@ -111,8 +109,7 @@ describe('тестирование constructorSlice', () => {
         calories: 420,
         price: 1255,
         image: 'https://code.s3.yandex.net/react/code/bun-02.png',
-        image_mobile:
-          'https://code.s3.yandex.net/react/code/bun-02-mobile.png',
+        image_mobile: 'https://code.s3.yandex.net/react/code/bun-02-mobile.png',
         image_large: 'https://code.s3.yandex.net/react/code/bun-02-large.png',
         __v: 0
       }
@@ -142,10 +139,16 @@ describe('тестирование constructorSlice', () => {
   });
 
   it('удаление ингредиента', () => {
-    initialState.constructorItems.ingredients.push(ingredient1);
+    const initState: TConstructorState = {
+      ...initialState,
+      constructorItems: {
+        ingredients: [ingredient1],
+        bun: null
+      }
+    };
 
     const updatedState = constructorSlice(
-      initialState,
+      initState,
       removeIngredient(ingredient1.id)
     );
 
@@ -153,13 +156,15 @@ describe('тестирование constructorSlice', () => {
   });
 
   it('изменение порядка ингредиентов в начинке', () => {
-    initialState.constructorItems.ingredients.push(
-      ingredient1,
-      ingredient2,
-      ingredient3
-    );
+    const initState: TConstructorState = {
+      ...initialState,
+      constructorItems: {
+        ingredients: [ingredient1, ingredient2, ingredient3],
+        bun: null
+      }
+    };
 
-    const updatedState = constructorSlice(initialState, moveIngredientUp(1));
+    const updatedState = constructorSlice(initState, moveIngredientUp(1));
 
     expect(updatedState.constructorItems.ingredients).toEqual([
       ingredient2,
@@ -167,7 +172,6 @@ describe('тестирование constructorSlice', () => {
       ingredient3
     ]);
   });
-
 
   describe('тестирование extraReducers constructorSlice', () => {
     it('orderBurgerThunk.pending', () => {
@@ -189,11 +193,15 @@ describe('тестирование constructorSlice', () => {
     });
 
     it('orderBurgerThunk.fulfilled', () => {
-      initialState.constructorItems.ingredients.push(ingredient2);
-
-      initialState.constructorItems.bun = {
-        id: '643d69a5c3f7b9001cfa093b',
-        ...bun
+      const initState: TConstructorState = {
+        ...initialState,
+        constructorItems: {
+          ingredients: [ingredient2],
+          bun: {
+            id: '643d69a5c3f7b9001cfa093b',
+            ...bun
+          }
+        }
       };
 
       const updatedState = constructorSlice(initialState, {
@@ -210,5 +218,4 @@ describe('тестирование constructorSlice', () => {
       expect(updatedState.orderModalData).toEqual(orderInfo);
     });
   });
-
 });
